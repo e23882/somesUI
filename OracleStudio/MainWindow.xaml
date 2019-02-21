@@ -3,10 +3,318 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:OracleStudio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="850" Width="1300" AllowsTransparency="True" Background="Black" WindowStyle="none" Opacity="0.8" OpacityMask="White"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+  
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <Grid Background="DarkGray" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Grid.Row="0" Click="ButtonOpenMenu_Click" Grid.Column="1">
+                <materialDesign:PackIcon Kind="Power" Width="25" Height="25"/>
+            </Button>
+            <Rectangle x:Name="rectLight" Fill="Yellow" Width="100" Margin="15" HorizontalAlignment="Right" Grid.Column="2"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <TabControl Grid.Column="0" Background="Transparent">
+                <TabItem Header="[B]系統設定" Background="Transparent" Foreground="#80ffff">
+                    <Grid>
+                        <Grid Margin="0,85,0,0">
+                            <Ellipse x:Name="cvCircle" Canvas.Left="225" Canvas.Top="250" Width="480" Height="480"  Stroke="#80ffff" StrokeThickness="1" />
+                            <Ellipse x:Name="cvCircle1" Canvas.Left="225" Canvas.Top="250" Width="300" Height="300"  Stroke="#80ffff" StrokeThickness="1" />
+                            <Line x:Name="line" X1="0" Y1="0" X2="0" Y2="1010" Stroke="#80ffff" StrokeThickness="100" Opacity="0.05"></Line>
+                        </Grid>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <DockPanel>
+                                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="35" IsIndeterminate="True" />
+                                        <TextBlock FontFamily="Segoe UI Semibold" Text="Progress" FontWeight="Bold" Margin="5,0,0,0"/>
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+                                        <TextBlock FontFamily="Segoe UI Semibold" Text="Progress" FontWeight="Bold" Margin="5,0,0,0"/>
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="20" IsIndeterminate="True" x:Name="IndeterminateToDeterminateCircularProgress" />
+                                        <TextBlock FontFamily="Segoe UI Semibold" Text="Progress" FontWeight="Bold" Margin="5,0,0,0"/>
+                                    </DockPanel>
+
+
+
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <ProgressBar Value="25" Height="10" Margin="10"/>
+                                    <ProgressBar Value="50" materialDesign:TransitionAssist.DisableTransitions="True"  Margin="10"/>
+                                    <ProgressBar Value="75"  Margin="10"/>
+                                    <ProgressBar IsIndeterminate="True" Margin="10"/>
+                                </StackPanel>
+                            </Grid>
+                            <materialDesign:DrawerHost Grid.Row="1"
+                              Margin="64"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              BorderThickness="2"
+                              BorderBrush="{DynamicResource MaterialDesignDivider}">
+                                <materialDesign:DrawerHost.LeftDrawerContent>
+                                    <StackPanel
+                                  Margin="16">
+                                        <TextBlock
+                                    Margin="4"
+                                    HorizontalAlignment="Center">
+                                  LEFT FIELD
+                                        </TextBlock>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Left}"
+                                    Margin="4"
+                                    HorizontalAlignment="Center"
+                                    Style="{DynamicResource MaterialDesignFlatButton}">
+                                            CLOSE THIS
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    Margin="4"
+                                    HorizontalAlignment="Center"
+                                    Style="{DynamicResource MaterialDesignFlatButton}">
+                                            CLOSE ALL
+                                        </Button>
+                                    </StackPanel>
+                                </materialDesign:DrawerHost.LeftDrawerContent>
+                                <materialDesign:DrawerHost.TopDrawerContent>
+                                    <StackPanel
+                                  Margin="16"
+                                  HorizontalAlignment="Center"
+                                  Orientation="Horizontal">
+                                        <TextBlock
+                                    Margin="4"
+                                    VerticalAlignment="Center">
+                                  TOP BANANA
+                                        </TextBlock>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    Style="{DynamicResource MaterialDesignFlatButton}"
+                                    Margin="4"
+                                    VerticalAlignment="Center">
+                                            CLOSE ALL
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Top}"
+                                    Style="{DynamicResource MaterialDesignFlatButton}"
+                                    Margin="4"
+                                    VerticalAlignment="Center">
+                                            CLOSE THIS
+                                        </Button>
+                                    </StackPanel>
+                                </materialDesign:DrawerHost.TopDrawerContent>
+                                <materialDesign:DrawerHost.RightDrawerContent>
+                                    <StackPanel
+                                  Margin="16">
+                                        <TextBlock
+                                    Margin="4"
+                                    HorizontalAlignment="Center">
+                                  THE RIGHT STUFF
+                                        </TextBlock>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Right}"
+                                    Margin="4"
+                                    HorizontalAlignment="Center"
+                                    Style="{DynamicResource MaterialDesignFlatButton}">
+                                            CLOSE THIS
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    Margin="4"
+                                    HorizontalAlignment="Center"
+                                    Style="{DynamicResource MaterialDesignFlatButton}">
+                                            CLOSE ALL
+                                        </Button>
+                                    </StackPanel>
+                                </materialDesign:DrawerHost.RightDrawerContent>
+                                <materialDesign:DrawerHost.BottomDrawerContent>
+                                    <StackPanel
+                                  Margin="16"
+                                  HorizontalAlignment="Center"
+                                  Orientation="Horizontal">
+                                        <TextBlock
+                                    Margin="4"
+                                    VerticalAlignment="Center">
+                                  BOTTOM BRACKET
+                                        </TextBlock>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    Style="{DynamicResource MaterialDesignFlatButton}"
+                                    Margin="4"
+                                    VerticalAlignment="Center">
+                                            CLOSE ALL
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Bottom}"
+                                    Style="{DynamicResource MaterialDesignFlatButton}"
+                                    Margin="4"
+                                    VerticalAlignment="Center">
+                                            CLOSE THIS
+                                        </Button>
+                                    </StackPanel>
+                                </materialDesign:DrawerHost.BottomDrawerContent>
+                                <Grid
+                                MinWidth="480"
+                                MinHeight="480">
+                                    <Grid
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Left}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="4">
+                                            <materialDesign:PackIcon
+                                      Kind="ArrowLeft" />
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Top}"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="4">
+                                            <materialDesign:PackIcon
+                                      Kind="ArrowUp" />
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Right}"
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Margin="4">
+                                            <materialDesign:PackIcon
+                                      Kind="ArrowRight" />
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                                    CommandParameter="{x:Static Dock.Bottom}"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="4">
+                                            <materialDesign:PackIcon
+                                      Kind="ArrowDown" />
+                                        </Button>
+                                        <Button
+                                    Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="4"
+                                    Style="{DynamicResource MaterialDesignRaisedAccentButton}">
+                                            <materialDesign:PackIcon
+                                      Kind="ArrowAll" />
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:DrawerHost>
+                            <Slider Grid.Row="1" TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="1" Maximum="50" Height="200"/>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="[A]系統操作" Background="Transparent" Foreground="#80ffff">
+                    <!--<Grid>
+                        <Ellipse x:Name="cvCircle" Canvas.Left="225" Canvas.Top="50" Width="550" Height="550"  Stroke="#80ffff" StrokeThickness="1" />
+                        <Ellipse x:Name="cvCircle1" Canvas.Left="225" Canvas.Top="50" Width="350" Height="350"  Stroke="#80ffff" StrokeThickness="1" />
+                        <Line x:Name="line" X1="0" Y1="0" X2="0" Y2="1010" Stroke="#80ffff" StrokeThickness="100" Opacity="0.05"></Line>
+                    </Grid>-->
+                </TabItem>
+            </TabControl>
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <Button
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                            Content="手動"
+                            Margin="5" />
+                <Button
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                            Content="自動"
+                            Margin="5" />
+                <Button
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                            Content="手動"
+                            Margin="5" />
+                <Button
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                            Content="系統初始化"
+                            Margin="5" />
+                <Button
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                            Content="啟動"
+                            Margin="5" />
+                <Button
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                            Content="停止"
+                            Margin="5" />
+               
+                <StackPanel Height="150" Background="Transparent">
+                    <Border BorderThickness="1" BorderBrush="#80ffff" Height="150" Margin="5">
+                    </Border>
+                </StackPanel>
+                <Button Content="demo" Foreground="#80ffff" Background="Transparent" BorderThickness="1" BorderBrush="#80ffff" Grid.Column="0" Opacity="1" Margin="5,5,5,0"/>
+                <Button Content="demo" Foreground="#80ffff" Background="Transparent" BorderThickness="1" BorderBrush="#80ffff" Grid.Column="0" Opacity="1" Margin="5,5,5,0"/>
+                <Button Content="demo" Foreground="#80ffff" Background="Transparent" BorderThickness="1" BorderBrush="#80ffff" Grid.Column="0" Opacity="1" Margin="5,5,5,0"/>
+
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
